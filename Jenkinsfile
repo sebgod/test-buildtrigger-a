@@ -7,10 +7,12 @@ pipeline {
         sh 'uname -a'
         
         script {
+          currentBuild.getCauses()?.each { c -> echo "[INFO] ${b.getFullDisplayName()}: Cause: ${c}" }
+          
           def manualTrigger = true
           currentBuild.upstreamBuilds?.each { b ->
             echo "[INFO] Upstream build: ${b.getFullDisplayName()}"
-            b.getCauses()?.each { c -> echo "[INFO] Get causes: ${c}" }
+            b.getCauses()?.each { c -> echo "[INFO] ${b.getFullDisplayName()}: Cause: ${c}" }
             manualTrigger = false
           }
           if (manualTrigger)
