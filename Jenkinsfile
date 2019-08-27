@@ -14,6 +14,7 @@ pipeline {
           currentBuild.upstreamBuilds?.each { b ->
             echo "[INFO] Upstream build: ${b.getFullDisplayName()}"
             b.getBuildCauses()?.each { c -> echo "[INFO] ${b.getFullDisplayName()}: Cause: ${c}" }
+            b.getBuildVariables()?.each { k, v -> echo "[INFO] ${b.getFullDisplayName()}: ${k}: ${v}" }
             manualTrigger = false
           }
           if (manualTrigger)
