@@ -21,7 +21,7 @@ pipeline {
           }
         }
         
-        build job: 'Test-BuildTrigger-B', quietPeriod: 5
+        build job: 'Test-BuildTrigger-B', wait: false, quietPeriod: 5
       }
     }
   }
