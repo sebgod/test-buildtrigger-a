@@ -8,6 +8,7 @@ pipeline {
         
         script {
           currentBuild.getBuildCauses()?.each { c -> echo "[INFO] ${currentBuild.getFullDisplayName()} (current): Cause: ${c}" }
+          currentBuild.getBuildVariables()?.each { k, v -> echo "[INFO] ${currentBuild.getFullDisplayName()} (current): ${k}: ${v}" }
           
           def manualTrigger = true
           currentBuild.upstreamBuilds?.each { b ->
