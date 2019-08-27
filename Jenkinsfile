@@ -20,6 +20,8 @@ pipeline {
               echo "[INFO] This build was triggered manually"
           }
         }
+        
+        build job: 'Test-BuildTrigger-B', quietPeriod: 5
       }
     }
   }
