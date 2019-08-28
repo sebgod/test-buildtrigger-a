@@ -18,7 +18,8 @@ pipeline {
             b.getBuildCauses()?.each { c ->
               if (c.endsWith('$SCMTriggerCause')) {
                 echo "[INFO] ${b.getFullDisplayName()}: Cause: ${c}"
-                echo b.getBuildVariables()?['GIT_COMMIT']
+                def build_vars = b.getBuildVariables()
+                if (build_vars) { echo "[INFO] ${build_vars['GIT_COMMIT']}" }
                 echo ''
               }
             }
