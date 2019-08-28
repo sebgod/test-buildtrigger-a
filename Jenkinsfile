@@ -11,6 +11,7 @@ pipeline {
           env.GIT_COMMIT = checkout scm
           currentBuild.getBuildCauses()?.each { c -> echo "[INFO] ${currentBuild.getFullDisplayName()} (current): Cause: ${c}" }
           currentBuild.getBuildVariables()?.each { k, v -> echo "[INFO] ${currentBuild.getFullDisplayName()} (current): ${k}: ${v}" }
+          echo ''
           
           def manualTrigger = true
           currentBuild.upstreamBuilds?.each { b ->
