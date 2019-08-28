@@ -9,7 +9,7 @@ pipeline {
         script {
           
           env.GIT_COMMIT = checkout scm
-          currentBuild.getBuildCauses('hudson.model.Cause$UpstreamCause')?.each { c -> echo "[INFO] ${currentBuild.getFullDisplayName()} (current): Cause: ${c}" }
+          currentBuild.getBuildCauses()?.each { c -> echo "[INFO] ${currentBuild.getFullDisplayName()} (current): Cause: ${c}" }
           currentBuild.getBuildVariables()?.each { k, v -> echo "[INFO] ${currentBuild.getFullDisplayName()} (current): ${k}: ${v}" }
           
           def manualTrigger = true
